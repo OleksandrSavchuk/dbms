@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        java: [21]  # або 17/20, якщо pom.xml під це
+        java: [21]
     steps:
       - uses: actions/checkout@v4
 
@@ -28,6 +28,5 @@ jobs:
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
-          # робимо назву артефакту унікальною для кожної ОС та запуску
           name: test-logs-${{ matrix.os }}-${{ github.run_id }}
           path: target/surefire-reports/
